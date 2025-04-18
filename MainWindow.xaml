@@ -1,0 +1,101 @@
+﻿<Window x:Class="lab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab2"
+        xmlns:my="clr-namespace:lab2.MyCode"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="grid1" Background="Lavender">
+        <Viewport3D>
+            <Viewport3D.Camera>
+                <!--Установка камеры - перспективная проекция-->
+                <PerspectiveCamera Position="0,0,5" LookDirection="0,0,-2" />
+            </Viewport3D.Camera>
+            <Viewport3D.Children>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <!--Установка освещения - прямой свет-->
+                        <DirectionalLight Color="White" Direction="0,0,-2" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <!--<my:Cube3D x:Name="Cube1"
+                               Size="0.8">
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D Axis="1,0,0"
+                                                         Angle="30"
+                                                         x:Name="rotateX1" />
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D Axis="0,1,0"
+                                                         Angle="-60"
+                                                         x:Name="rotateY1" />
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D Axis="0,0,1"
+                                                         Angle="60"
+                                                         x:Name="rotateZ1" />
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+                </my:Cube3D>-->
+                <my:Sphere3D x:Name="Sphere1">
+                    <ModelVisual3D.Transform>
+                        <Transform3DGroup>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D Axis="1,0,0"
+                                                         x:Name="rotateX"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D Axis="0,1,0"
+                                                         x:Name="rotateY"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                            <RotateTransform3D>
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D Axis="0,0,1"
+                                                         x:Name="rotateZ"/>
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                        </Transform3DGroup>
+                    </ModelVisual3D.Transform>
+                </my:Sphere3D>
+            </Viewport3D.Children>
+        </Viewport3D>
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="Grid.MouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation 
+                                Storyboard.TargetName="rotateX" 
+                                Storyboard.TargetProperty="Angle" 
+                                From="0" To="0" 
+                                Duration="0:0:5"/>
+                        <DoubleAnimation 
+                                Storyboard.TargetName="rotateY" 
+                                Storyboard.TargetProperty="Angle" 
+                                From="0" To="2720" 
+                                Duration="0:0:25"/>
+                        <DoubleAnimation 
+                                Storyboard.TargetName="rotateZ" 
+                                Storyboard.TargetProperty="Angle" 
+                                From="0" To="0" 
+                                Duration="0:0:5"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
+    </Grid>
+</Window>
